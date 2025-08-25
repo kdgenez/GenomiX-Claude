@@ -241,7 +241,7 @@ st.markdown("""
     
     /* Sidebar styling */
     .sidebar-header {
-        color: var(--azul-profundo);
+        color: var(--gris-neutro);
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
