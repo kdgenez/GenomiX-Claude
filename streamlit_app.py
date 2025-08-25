@@ -366,11 +366,6 @@ def validate_groq_api_key(api_key: str) -> bool:
         # Intentar con varios modelos activos de Groq
         models_to_try = [
             "deepseek-r1-distill-llama-70b"
-            "llama-3.1-70b-versatile",
-            "llama-3.1-8b-instant", 
-            "llama3-70b-8192",
-            "gemma2-9b-it",
-            "mixtral-8x7b-32768"  # Mantener como respaldo por si vuelve
         ]
         
         for model in models_to_try:
