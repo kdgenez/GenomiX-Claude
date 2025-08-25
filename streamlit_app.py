@@ -250,7 +250,7 @@ st.markdown("""
     /* Sidebar buttons */
     .sidebar .stButton > button {
         background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%);
-        color: var(--azul-profundo) !important;
+        color: var(--white) !important;
         border: 1px solid var(--verde-esmeralda);
         border-radius: 15px;
         padding: 0.3rem 0.8rem;
