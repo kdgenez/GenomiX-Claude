@@ -57,18 +57,79 @@ st.markdown("""
         border-radius: 15px;
         margin-bottom: 1.5rem;
         border-left: 5px solid;
+        color: #2C3E50 !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        font-weight: 500 !important;
+    }
+    
+    .chat-message strong {
+        color: #1B365D !important;
+        font-weight: 700 !important;
+        font-size: 17px !important;
     }
     
     .user-message {
         background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
         border-left-color: var(--azul-profundo);
         box-shadow: 0 2px 10px rgba(27, 54, 93, 0.1);
+        border: 1px solid #90CAF9;
+    }
+    
+    .user-message strong {
+        color: var(--azul-profundo) !important;
     }
     
     .agent-message {
         background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%);
         border-left-color: var(--verde-esmeralda);
         box-shadow: 0 2px 10px rgba(46, 204, 113, 0.1);
+        border: 1px solid #A5D6A7;
+    }
+    
+    .agent-message strong {
+        color: var(--verde-esmeralda) !important;
+    }
+    
+    /* Forzar estilo de texto en mensajes */
+    .chat-message * {
+        color: #2C3E50 !important;
+    }
+    
+    .chat-message strong * {
+        color: inherit !important;
+    }
+    
+    /* Estilos para listas dentro de mensajes */
+    .chat-message ul, .chat-message ol {
+        margin: 10px 0 !important;
+        padding-left: 20px !important;
+    }
+    
+    .chat-message li {
+        margin: 5px 0 !important;
+        color: #2C3E50 !important;
+    }
+    
+    /* Estilos para código dentro de mensajes */
+    .chat-message code {
+        background-color: #F8F9FA !important;
+        color: #E91E63 !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        font-family: 'Courier New', monospace !important;
+        border: 1px solid #DEE2E6 !important;
+    }
+    
+    /* Estilos para enlaces dentro de mensajes */
+    .chat-message a {
+        color: var(--cian-brillante) !important;
+        font-weight: 600 !important;
+        text-decoration: underline !important;
+    }
+    
+    .chat-message a:hover {
+        color: var(--azul-profundo) !important;
     }
     
     /* Cajas de estadísticas */
@@ -256,8 +317,26 @@ st.markdown("""
         color: var(--cian-brillante) !important;
     }
     
-    /* Mejoras para dispositivos móviles */
-    @media (max-width: 768px) {
+    /* Forzar visibilidad de texto en toda la app */
+    .stMarkdown, .stText, .stWrite {
+        color: #2C3E50 !important;
+    }
+    
+    /* Forzar estilos en elementos de Streamlit */
+    .stMarkdown p, .stMarkdown div, .stMarkdown span {
+        color: #2C3E50 !important;
+    }
+    
+    /* Asegurar contraste en headers y subtítulos */
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--azul-profundo) !important;
+    }
+    
+    /* Mejorar visibilidad de párrafos */
+    p {
+        color: var(--gris-neutro) !important;
+        line-height: 1.6 !important;
+    }
         .main-header {
             font-size: 2.5rem;
         }
@@ -374,16 +453,16 @@ def display_chat_history():
             # Mensaje del usuario
             st.markdown(f"""
             <div class="chat-message user-message">
-                <strong>🧑 Usuario ({timestamp}):</strong><br>
-                {user_msg}
+                <strong>🧑 Usuario ({timestamp}):</strong><br><br>
+                <span style="color: #2C3E50 !important; font-size: 16px; line-height: 1.6;">{user_msg}</span>
             </div>
             """, unsafe_allow_html=True)
             
             # Respuesta de GenomiX
             st.markdown(f"""
             <div class="chat-message agent-message">
-                <strong><span class="dna-icon">🧬</span> GenomiX:</strong><br>
-                {agent_msg}
+                <strong><span class="dna-icon">🧬</span> GenomiX:</strong><br><br>
+                <span style="color: #2C3E50 !important; font-size: 16px; line-height: 1.6;">{agent_msg}</span>
             </div>
             """, unsafe_allow_html=True)
 
