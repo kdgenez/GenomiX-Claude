@@ -102,6 +102,53 @@ st.markdown("""
         box-shadow: 0 5px 15px rgba(0, 194, 209, 0.4);
     }
     
+    /* CAMPOS DE ENTRADA DE TEXTO - MEJORADOS */
+    .stTextInput > div > div > input {
+        background-color: #FFFFFF !important;
+        color: #2C3E50 !important;
+        border: 2px solid var(--cian-brillante) !important;
+        border-radius: 10px !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        padding: 12px 16px !important;
+        box-shadow: 0 2px 8px rgba(0, 194, 209, 0.1) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stTextInput > div > div > input:focus {
+        border-color: var(--azul-profundo) !important;
+        box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.2) !important;
+        outline: none !important;
+    }
+    
+    .stTextInput > div > div > input::placeholder {
+        color: #7F8C8D !important;
+        font-style: italic !important;
+        opacity: 0.8 !important;
+    }
+    
+    /* Campo de contraseña para API Key */
+    .stTextInput > div > div > input[type="password"] {
+        background-color: #FFF9E6 !important;
+        color: #8B4513 !important;
+        border: 2px solid #FFE066 !important;
+        font-family: monospace !important;
+    }
+    
+    .stTextInput > div > div > input[type="password"]:focus {
+        background-color: #FFFACD !important;
+        border-color: #DAA520 !important;
+        box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2) !important;
+    }
+    
+    /* Labels de los inputs */
+    .stTextInput > label {
+        color: var(--azul-profundo) !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+    
     /* API Key input styling */
     .api-key-container {
         background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
@@ -111,12 +158,52 @@ st.markdown("""
         margin-bottom: 2rem;
     }
     
+    .api-key-container h3 {
+        color: var(--azul-profundo) !important;
+        margin-bottom: 1rem;
+    }
+    
+    .api-key-container p {
+        color: var(--gris-neutro) !important;
+        margin-bottom: 0.8rem;
+    }
+    
+    .api-key-container li {
+        color: var(--gris-neutro) !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .api-key-container a {
+        color: var(--cian-brillante) !important;
+        font-weight: bold;
+    }
+    
     /* Sidebar styling */
     .sidebar-header {
         color: var(--azul-profundo);
         font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
+    }
+    
+    /* Sidebar buttons */
+    .sidebar .stButton > button {
+        background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%);
+        color: var(--azul-profundo) !important;
+        border: 1px solid var(--verde-esmeralda);
+        border-radius: 15px;
+        padding: 0.3rem 0.8rem;
+        font-size: 12px;
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.3rem;
+    }
+    
+    .sidebar .stButton > button:hover {
+        background: linear-gradient(135deg, #D5F4E6 0%, #C8E6C9 100%);
+        transform: translateX(5px);
+        box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
     }
     
     /* Footer */
@@ -137,6 +224,55 @@ st.markdown("""
     .dna-icon {
         animation: dna-rotate 4s linear infinite;
         display: inline-block;
+    }
+    
+    /* Mejoras de contraste para mensajes de estado */
+    .stSuccess {
+        background-color: #D4EDDA !important;
+        color: #155724 !important;
+        border: 1px solid #C3E6CB !important;
+    }
+    
+    .stError {
+        background-color: #F8D7DA !important;
+        color: #721C24 !important;
+        border: 1px solid #F5C6CB !important;
+    }
+    
+    .stInfo {
+        background-color: #D1ECF1 !important;
+        color: #0C5460 !important;
+        border: 1px solid #BEE5EB !important;
+    }
+    
+    .stWarning {
+        background-color: #FFF3CD !important;
+        color: #856404 !important;
+        border: 1px solid #FFEAA7 !important;
+    }
+    
+    /* Spinner personalizado */
+    .stSpinner > div {
+        color: var(--cian-brillante) !important;
+    }
+    
+    /* Mejoras para dispositivos móviles */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .slogan {
+            font-size: 1rem;
+        }
+        
+        .stTextInput > div > div > input {
+            font-size: 14px !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
