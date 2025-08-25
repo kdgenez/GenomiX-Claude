@@ -1,10 +1,49 @@
+# GenomiX - Agente Inteligente de Biología
+# Dependencias principales del proyecto
+
+# Framework principal
 streamlit>=1.28.0
+
+# LangChain y componentes
 langchain>=0.0.350
 langchain-groq>=0.0.1
-python-dotenv>=1.0.0
-faiss-cpu>=1.7.4
+
+# Modelos de embeddings
 sentence-transformers>=2.2.2
-requests>=2.31.0
-pandas>=2.0.0
+
+# Base de datos vectorial
+faiss-cpu>=1.7.4
+
+# Procesamiento de datos
 numpy>=1.24.0
+pandas>=2.0.0
+
+# Utilidades
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Visualización
 plotly>=5.15.0
+
+# Logging y debugging
+logging>=0.4.9.6
+
+# Procesamiento de texto
+unicodedata2>=15.0.0
+
+# JSON y serialización (incluidos en Python estándar pero por compatibilidad)
+jsonschema>=4.17.0
+
+# Utilidades adicionales
+pathlib>=1.0.1
+pickle-mixin>=1.0.2
+
+# Para desarrollo y testing (opcionales)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.7.0
+flake8>=6.0.0
+
+# Dependencias de sistema (se instalan automáticamente)
+typing-extensions>=4.7.0
+pydantic>=2.0.0
