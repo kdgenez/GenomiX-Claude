@@ -284,15 +284,39 @@ def validate_groq_api_key(api_key: str) -> bool:
     
     try:
         from langchain_groq import ChatGroq
-        llm = ChatGroq(
-            groq_api_key=api_key,
-            model_name="mixtral-8x7b-32768",
-            temperature=0.1,
-            max_tokens=10
-        )
-        # Test simple
-        response = llm.invoke([{"role": "user", "content": "Hi"}])
-        return True
+        # Intentar con varios modelos activos de Groq
+        models_to_try = [
+            "llama-3.1-70b-versatile",
+            "llama-3.1-8b-instant", 
+            "llama3-70b-8192",
+            "gemma2-9b-it",
+            "mixtral-8x7b-32768"  # Mantener como respaldo por si vuelve
+        ]
+        
+        for model in models_to_try:
+            try:
+                llm = ChatGroq(
+                    groq_api_key=api_key,
+                    model_name=model,
+                    temperature=0.1,
+                    max_tokens=10
+                )
+                # Test simple
+                response = llm.invoke([{"role": "user", "content": "Hi"}])
+                st.success(f"✅ Conectado usando modelo: {model}")
+                return True
+            except Exception as model_error:
+                if "model_decommissioned" in str(model_error) or "model not found" in str(model_error).lower():
+                    continue  # Probar siguiente modelo
+                else:
+                    # Si es otro tipo de error, puede ser problema de API key
+                    st.error(f"Error con modelo {model}: {str(model_error)}")
+                    return False
+        
+        # Si ningún modelo funcionó
+        st.error("❌ No se pudo conectar con ningún modelo disponible de Groq. Verifica tu API key.")
+        return False
+        
     except Exception as e:
         st.error(f"Error validando API Key: {str(e)}")
         return False
@@ -317,9 +341,10 @@ def display_api_key_setup():
         <ol>
             <li>Visita <a href="https://console.groq.com" target="_blank">console.groq.com</a></li>
             <li>Regístrate o inicia sesión</li>
-            <li>Genera una nueva API key</li>
+            <li>Ve a "API Keys" y genera una nueva clave</li>
             <li>Copia y pega la clave aquí abajo</li>
         </ol>
+        <p><strong>Nota:</strong> GenomiX usará automáticamente el mejor modelo disponible (Llama 3.1, Gemma2, etc.)</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -469,7 +494,7 @@ def main():
         # Información técnica
         st.markdown("### ⚙️ Información Técnica")
         st.info(f"""
-        **Modelo**: Mixtral-8x7B (Groq)
+        **Modelos**: Llama 3.1 70B, Llama 3.1 8B, Gemma2 9B
         **Framework**: LangChain
         **Conocimiento**: Base vectorial especializada
         **Estado**: ✅ Operativo
