@@ -53,7 +53,7 @@ class GenomiXAgent:
         
         return ChatGroq(
             groq_api_key=self.groq_api_key,
-            model_name="mixtral-8x7b-32768",
+            model_name="llama-3.1-70b-versatile",
             temperature=0.2,  # Temperatura moderada para balance entre precisión y creatividad
             max_tokens=3000,
             top_p=0.9,
