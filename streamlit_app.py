@@ -379,6 +379,7 @@ def validate_groq_api_key(api_key: str) -> bool:
                 # Test simple
                 response = llm.invoke([{"role": "user", "content": "Hi"}])
                 st.success(f"✅ Conectado usando modelo: {model}")
+                content = getattr(response, "content", str(response))
                 return True
             except Exception as model_error:
                 if "model_decommissioned" in str(model_error) or "model not found" in str(model_error).lower():
