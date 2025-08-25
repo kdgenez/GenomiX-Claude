@@ -25,6 +25,69 @@ st.markdown("""
         --gris-neutro: #4D4D4D;
     }
     
+    /* ===== ESTILOS DEL SIDEBAR - ACTUALIZADO ===== */
+    /* Fondo principal del sidebar */
+    .stSidebar,
+    .stSidebar > div,
+    .stSidebar [data-testid="stSidebar"] > div {
+        background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%) !important;
+        border-right: 3px solid var(--cian-brillante) !important;
+    }
+    
+    /* Contenido del sidebar */
+    .stSidebar .main {
+        background: transparent !important;
+        padding: 1rem !important;
+    }
+    
+    /* Texto del sidebar */
+    .stSidebar .markdown-text-container,
+    .stSidebar .stMarkdown {
+        color: var(--azul-profundo) !important;
+    }
+    
+    .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
+        color: var(--azul-profundo) !important;
+        font-weight: bold !important;
+    }
+    
+    .stSidebar p, .stSidebar li {
+        color: var(--gris-neutro) !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Botones del sidebar mejorados */
+    .stSidebar .stButton > button {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%) !important;
+        color: var(--azul-profundo) !important;
+        border: 2px solid var(--verde-esmeralda) !important;
+        border-radius: 15px !important;
+        padding: 0.5rem 1rem !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 0.5rem !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .stSidebar .stButton > button:hover {
+        background: linear-gradient(135deg, var(--verde-esmeralda) 0%, #27AE60 100%) !important;
+        color: white !important;
+        transform: translateX(5px) !important;
+        box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4) !important;
+    }
+    
+    /* Info box en sidebar */
+    .stSidebar .stAlert {
+        background: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 100%) !important;
+        border: 2px solid var(--cian-brillante) !important;
+        border-radius: 10px !important;
+        color: var(--azul-profundo) !important;
+    }
+    
+    /* ===== RESTO DE ESTILOS ORIGINALES ===== */
+    
     /* Header principal */
     .main-header {
         font-size: 3.5rem;
@@ -239,32 +302,17 @@ st.markdown("""
         font-weight: bold;
     }
     
-    /* Sidebar styling */
+    /* Sidebar styling - HEADER ACTUALIZADO */
     .sidebar-header {
-        color: var(--gris-neutro);
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-    }
-    
-    /* Sidebar buttons */
-    .sidebar .stButton > button {
-        background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%);
-        color: var(--white) !important;
-        border: 1px solid var(--verde-esmeralda);
-        border-radius: 15px;
-        padding: 0.3rem 0.8rem;
-        font-size: 12px;
-        font-weight: 500;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 0.3rem;
-    }
-    
-    .sidebar .stButton > button:hover {
-        background: linear-gradient(135deg, #D5F4E6 0%, #C8E6C9 100%);
-        transform: translateX(5px);
-        box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+        color: var(--azul-profundo) !important;
+        font-size: 1.3rem !important;
+        font-weight: bold !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%) !important;
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        border: 2px solid var(--cian-brillante) !important;
     }
     
     /* Footer */
@@ -337,6 +385,9 @@ st.markdown("""
         color: var(--gris-neutro) !important;
         line-height: 1.6 !important;
     }
+    
+    /* Media queries para responsividad */
+    @media (max-width: 768px) {
         .main-header {
             font-size: 2.5rem;
         }
