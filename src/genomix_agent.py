@@ -464,18 +464,18 @@ Usa herramientas apropiadas y mantén el tono GenomiX."""
             # Ejecutar agente
             result = self.agent.run(input=contextualized_query)
             
-            # Limpiar y formatear respuesta
             if isinstance(result, dict) and "output" in result:
                 response = result["output"]
+            elif hasattr(result, "content"):  
+                response = result.content.strip()
             else:
-                response = str(result)
-            
-            # Asegurar que la respuesta tenga el tono GenomiX
+                # Si el modelo incluye razonamiento antes de la respuesta,
+                # cortamos por "Respuesta Final:" o nos quedamos con lo último.
+                response = str(result).split("Respuesta Final:")[-1].strip()
+
+            # Asegurar tono GenomiX
             if not any(marker in response.lower() for marker in ['genomix', '🧬', '🔬']):
                 response = f"🧬 **GenomiX responde:**\n\n{response}\n\n*Descifrando la vida, gen por gen.*"
-            
-            logger.info("Consulta procesada exitosamente por GenomiX")
-            return response
             
         except Exception as e:
             logger.error(f"Error procesando consulta GenomiX: {e}")
